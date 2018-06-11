@@ -52,6 +52,7 @@ class Game:
         self.DealCard()
         # Round 2
         self.DealCard()
+        self.InsuranceCheck()
         # Player hit card or stand
         self.HitCard()
         # -----------------------------------------------------------
@@ -184,27 +185,18 @@ class Game:
             print("---------------------------------------------")
             print("Game over")
 
+    def InsuranceCheck(self):
+        if self.HasInsuranceSituation():
+            for player in self.playerList:
+                print("{0}, 是否要保險? (y/n)".format(player.name))
+                ans = input()
+                if ans.lower() == "y":
+                    if not self.dealer.blackJack:
+                        player.gambleCash /= 2
+        return
 
-'''    
-    # def PlayerCanInsurance(self, dealer):
-    #     pt = dealer.hand[1].rank
-    #     if dealer.hand[1].rank > 10:
-    #         pt = 10
-    #     return pt == 1 or pt == 10
-
-    # def AskPlayerToInsurance(self, playList):
-    #     hasPlayerInsurance = False
-    #     for player in self.aliveList:
-    #         print("是否要保險? (y/n)")
-    #         ans = input()
-    #         if ans.lower() == "y":
-    #             hasPlayerInsurance = True
-    #             if self.dealer.blackJack:
-    #                 player.totalCash += player.gambleCash
-    #             else:
-    #                 player.gambleCash /= 2
-
-    #     if hasPlayerInsurance:
-    #         if self.dealer.blackJack:
-    #     return
-'''
+    def HasInsuranceSituation(self):
+        pt = self.dealer.hand[1].rank
+        if self.dealer.hand[1].rank > 10:
+            pt = 10
+        return pt == 1 or pt == 10

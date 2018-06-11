@@ -183,7 +183,7 @@ class TestGame(unittest.TestCase):
 
     def test_game(self):
         # Set up
-        print("Test Seed: 123")
+        print("Test: seed 123")
         game = Game()
         game.Run(seed=123)
         # Check
@@ -192,7 +192,7 @@ class TestGame(unittest.TestCase):
     def test_dealerBurst(self):
         presetCards = [Card(0, 7), Card(1, 7), Card(2, 5),
                        Card(2, 7), Card(3, 7), Card(3, 9), Card(0, 8)]
-        print("Test dealer burst: 2 player, DON'T HIT CARD")
+        print("Test: dealer burst: 2 player, DON'T HIT CARD")
         game = Game()
         game.Run(presetCards=presetCards)
         return True
@@ -201,7 +201,7 @@ class TestGame(unittest.TestCase):
         presetCards = [Card(0, 1), Card(1, 8), Card(2, 5),
                        Card(2, 10), Card(3, 8), Card(3, 9), Card(0, 6),
                        Card(0, 4), Card(1, 10), Card(0, 5), Card(1, 9)]
-        print("Test player out of cash")
+        print("Test: player out of cash")
         print("2 Player, Don't hit card, All-in, Next game")
         game = Game()
         game.Run(presetCards=presetCards)
@@ -210,8 +210,28 @@ class TestGame(unittest.TestCase):
         presetCards = [Card(0, 1), Card(1, 1), Card(2, 5),
                        Card(2, 10), Card(3, 10), Card(3, 9), Card(0, 6),
                        Card(0, 4), Card(1, 10), Card(0, 5), Card(1, 9), Card(3, 5)]
-        print("Test dealer don't hit card if nobody alive")
+        print("Test: dealer don't hit card if nobody alive")
         print("2 Player, Don't do anything")
+        game = Game()
+        game.Run(presetCards=presetCards)
+
+    def test_Insurance_1(self):
+        presetCards = [Card(0, 1), Card(1, 8), Card(2, 10),
+                       Card(2, 7), Card(3, 9), Card(3, 1),
+                       Card(0, 3), Card(1, 5), Card(0, 5), Card(1, 9), Card(3, 5)]
+        print("Test: Insurance situation, Insurance Success")
+        print("Player01 push, Player02 lose")
+        print("2 Player, Hit card")
+        game = Game()
+        game.Run(presetCards=presetCards)
+
+    def test_Insurance_2(self):
+        presetCards = [Card(0, 1), Card(1, 1), Card(2, 9),
+                       Card(2, 7), Card(3, 7), Card(3, 1),
+                       Card(0, 3), Card(1, 3), Card(0, 5), Card(1, 9), Card(3, 5)]
+        print("Test: Insurance situation, Insurance fail")
+        print("Player01 insurance, Player02 don't insurance")
+        print("2 Player, Hit card")
         game = Game()
         game.Run(presetCards=presetCards)
 
