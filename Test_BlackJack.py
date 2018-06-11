@@ -181,21 +181,21 @@ class TestGame(unittest.TestCase):
         self.assertTrue(suit_OK)
         self.assertTrue(rank_OK)
 
-    # def test_game(self):
-    #     # Set up
-    #     print("Test Seed: 123")
-    #     game = Game()
-    #     game.Run(seed=123)
-    #     # Check
-    #     return True
+    def test_game(self):
+        # Set up
+        print("Test Seed: 123")
+        game = Game()
+        game.Run(seed=123)
+        # Check
+        return True
 
-    # def test_dealerBurst(self):
-    #     presetCards = [Card(0, 7), Card(1, 7), Card(2, 5),
-    #                    Card(2, 7), Card(3, 7), Card(3, 9), Card(0, 8)]
-    #     print("Test dealer burst: 2 player, DON'T HIT CARD")
-    #     game = Game()
-    #     game.Run(presetCards=presetCards)
-    #     return True
+    def test_dealerBurst(self):
+        presetCards = [Card(0, 7), Card(1, 7), Card(2, 5),
+                       Card(2, 7), Card(3, 7), Card(3, 9), Card(0, 8)]
+        print("Test dealer burst: 2 player, DON'T HIT CARD")
+        game = Game()
+        game.Run(presetCards=presetCards)
+        return True
 
     def test_playerOutOfCash(self):
         presetCards = [Card(0, 1), Card(1, 8), Card(2, 5),
@@ -206,14 +206,14 @@ class TestGame(unittest.TestCase):
         game = Game()
         game.Run(presetCards=presetCards)
 
-    # def test_NobodyAlive(self):
-    #     presetCards = [Card(0, 1), Card(1, 1), Card(2, 5),
-    #                    Card(2, 10), Card(3, 10), Card(3, 9), Card(0, 6),
-    #                    Card(0, 4), Card(1, 10), Card(0, 5), Card(1, 9), Card(3, 5)]
-    #     print("Test dealer don't hit card if nobody alive")
-    #     print("2 Player, Don't do anything")
-    #     game = Game()
-    #     game.Run(presetCards=presetCards)
+    def test_NobodyAlive(self):
+        presetCards = [Card(0, 1), Card(1, 1), Card(2, 5),
+                       Card(2, 10), Card(3, 10), Card(3, 9), Card(0, 6),
+                       Card(0, 4), Card(1, 10), Card(0, 5), Card(1, 9), Card(3, 5)]
+        print("Test dealer don't hit card if nobody alive")
+        print("2 Player, Don't do anything")
+        game = Game()
+        game.Run(presetCards=presetCards)
 
 
 if __name__ == '__main__':
