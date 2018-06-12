@@ -65,7 +65,7 @@ class Game:
         for player in self.playerList:
             print("{0}, 請輸入下注金額: ".format(player.name), end='')
             ans = int(input())
-            while ans > player.totalCash and ans <= 0:
+            while ans > player.totalCash or ans <= 0:
                 print("下注金額應大於零，但不可大於現有籌碼，請重新輸入")
                 print("{0}, 請輸入下注金額: ".format(player.name), end='')
                 ans = int(input())
@@ -85,18 +85,18 @@ class Game:
 
     def HitCard(self):
         print("加牌階段")
-        stillHasPlayer = False
+        AllBurst = True
         for player in self.playerList:
             while player.safe and player.WantOneMoreCard() and self.deck.HasMoreCard():
                 player.SaveACard(self.deck.DealACard())
                 player.Dump()
                 sleep(5)
             if player.safe:
-                stillHasPlayer = True
+                AllBurst = False
             print("---------------------------------------------")
             self.ShowPlayerStatus(player)
         # Deal hit condition: status pass, poinnts < 17, deck has more card, still have alive player
-        while stillHasPlayer and self.dealer.safe and self.dealer.WantOneMoreCard() and self.deck.HasMoreCard():
+        while not AllBurst and self.dealer.safe and self.dealer.WantOneMoreCard() and self.deck.HasMoreCard():
             self.dealer.SaveACard(self.deck.DealACard())
             self.dealer.Dump()
             sleep(5)

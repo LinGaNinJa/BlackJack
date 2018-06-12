@@ -207,9 +207,9 @@ class TestGame(unittest.TestCase):
         game.Run(presetCards=presetCards)
 
     def test_NobodyAlive(self):
-        presetCards = [Card(0, 1), Card(1, 1), Card(2, 5),
-                       Card(2, 10), Card(3, 10), Card(3, 9), Card(0, 6),
-                       Card(0, 4), Card(1, 10), Card(0, 5), Card(1, 9), Card(3, 5)]
+        presetCards = [Card(0, 9), Card(1, 9), Card(2, 5),
+                       Card(2, 9), Card(3, 9), Card(3, 9), Card(0, 6),
+                       Card(0, 4), Card(1, 4), Card(0, 5), Card(1, 9), Card(3, 5)]
         print("Test: dealer don't hit card if nobody alive")
         print("2 Player, Don't do anything")
         game = Game()
