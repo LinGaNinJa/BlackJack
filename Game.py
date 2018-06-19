@@ -35,7 +35,7 @@ class Game:
             self.playerList.append(Player(name=playerName))
             i += 1
 
-        self.dealer = Dealer()
+        self.dealer = Dealer(name="莊家")
         self.Play()
 
     def Play(self):

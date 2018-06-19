@@ -72,15 +72,6 @@ class Player:
 
 
 class Dealer(Player):
-    def __init__(self, name=None):
-        self.safe = True
-        self.burst = False
-        self.blackJack = False
-        self.totalPoints = 0
-        self.hand = []
-
-        self.hide = 0
-        self.name = "莊家"
 
     def Dump(self, show=False):
         print()
